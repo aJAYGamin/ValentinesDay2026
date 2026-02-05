@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Countdown</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .time-box {
+            background: #fff0f3;
+            padding: 10px;
+            border-radius: 15px;
+            min-width: 60px;
+            border: 2px solid var(--accent-red);
+        }
+        .time-num {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--accent-red);
+        }
+        .time-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-color);
+        }
+        .qr-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fffafa;
+            border-radius: 20px;
+            border: 2px dashed var(--accent-red);
+            display: inline-block;
+        }
+        .qr-img {
+            width: 170px;
+            height: 200px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        .closing-heart {
+            font-size: 100px;
+            margin: 10px 0;
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <audio id="myAudio" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+    <div class="hearts-container" id="hearts-container"></div>
+
+    <section class="card">
+        <h2 class="cursive-font" style="font-size: 2.2rem;">See you soon, Ammu!</h2>
+        
+        <div class="closing-heart">❤️</div>
+
+        <p>Counting down to our special day...</p>
+
+        <div class="timer-container">
+            <div class="time-box">
+                <span class="time-num" id="days">00</span>
+                <span class="time-label">Days</span>
+            </div>
+            <div class="time-box">
+                <span class="time-num" id="hours">00</span>
+                <span class="time-label">Hrs</span>
+            </div>
+            <div class="time-box">
+                <span class="time-num" id="mins">00</span>
+                <span class="time-label">Mins</span>
+            </div>
+            <div class="time-box">
+                <span class="time-num" id="secs">00</span>
+                <span class="time-label">Secs</span>
+            </div>
+        </div>
+
+        <div class="qr-section">
+            <p style="font-size: 0.9rem; margin: 0;">Scan for a surprise!</p>
+            <img src="qr-code.png" alt="QR Code" class="qr-img">
+        </div>
+
+        <br>
+        <button class="btn" onclick="location.href='index.html'" style="margin-top: 20px; font-size: 0.9rem; padding: 12px; width: 60%;">Back to start 🔄</button>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Set your target date here
+        const target = new Date("February 14, 2026 00:00:00").getTime();
+        
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            } else {
+                document.querySelector(".timer-container").innerHTML = "<h3 class='cursive-font'>Happy Valentine's Day! ❤️</h3>";
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>

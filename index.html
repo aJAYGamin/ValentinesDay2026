@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be Mine?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts-container" id="hearts-container"></div>
+    
+    <audio id="myAudio" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <section class="card">
+        <img src="cute-bear.gif" class="main-gif" alt="Asking Bear">
+        <h1>Hey there, <br>Will you be my Valentine?</h1>
+        
+        <div class="button-group">
+            <button class="btn" onclick="startStory('celebration.html')">Yes! ❤️</button>
+            <br></br>
+            <button class="btn btn-alt" onclick="location.href='try-again.html'">No... 🥺</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

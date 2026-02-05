@@ -1,0 +1,98 @@
+:root {
+    --pink-bg: #ffdeeb;
+    --card-white: #ffffff;
+    --accent-red: #ff4d6d;
+    --text-color: #5c2a33;
+}
+
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', 'cursive', sans-serif;
+    background-color: var(--pink-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Updated Card for Larger Content */
+.card {
+    background: var(--card-white);
+    padding: 40px 20px;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 4px solid #fec5d9;
+    width: 90%;
+    max-width: 450px; /* Increased width */
+}
+
+/* GIF and Gift Image Sizing */
+.main-gif, .gift-img {
+    width: 100%; /* Spans the width of the card */
+    max-width: 380px; /* Large but fits on phone screens */
+    height: auto;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    border: 6px solid #fec5d9;
+    
+    /* Animation to make it feel "alive" */
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Button Sizing */
+.btn {
+    background: var(--accent-red);
+    color: white;
+    border: none;
+    padding: 18px 40px; /* Bigger buttons for easier clicking */
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #c9184a;
+    transition: 0.2s;
+    width: 80%; /* Makes button more prominent */
+}
+
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+/* Hearts background */
+.heart {
+    position: absolute;
+    top: -10%;
+    font-size: 24px;
+    animation: fall linear infinite;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+/* Letter Specific Styles */
+.cursive-font {
+    font-family: 'Dancing Script', cursive; /* The handwriting font */
+    font-size: 1.5rem; /* Increased size for readability */
+    line-height: 1.8;
+    color: #5c2a33;
+    text-align: left;
+    padding: 20px;
+    background-image: linear-gradient(#f0f0f0 1.1px, transparent 1.1px); /* Optional: subtle lined paper effect */
+    background-size: 100% 2em;
+}
+
+.letter-card {
+    max-width: 500px; /* Gives the letter a bit more room to breathe */
+    background-color: #fffafa; /* Slightly different white to look like paper */
+}
